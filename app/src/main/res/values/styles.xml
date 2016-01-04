@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="InformationCardTitle">
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textColor">#FF9800</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="InformationTitle">
+        <item name="android:textColor">#1f1f1f</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+
+    <style name="InformationSubtitle">
+        <item name="android:textColor">#6d6d6d</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+</resources>

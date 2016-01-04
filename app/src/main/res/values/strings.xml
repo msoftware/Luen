@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Luen</string>
+
+    <!-- Strings for Info -->
+    <string name="info_version">Версия\u0020</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
