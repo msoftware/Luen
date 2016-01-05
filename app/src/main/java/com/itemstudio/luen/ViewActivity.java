@@ -70,7 +70,9 @@ public class ViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.standard_toolbar);
+
+        toolbar.setTitle("О приложении");
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back_vector);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -78,7 +80,7 @@ public class ViewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 onBackPressed();
             }
-        }); */
+        });
 
         StringBuffer permissions = new StringBuffer();
 
@@ -92,9 +94,8 @@ public class ViewActivity extends AppCompatActivity {
 
         String[] requestedPermissions = packageInfo.requestedPermissions;
         if (requestedPermissions != null) {
-            for (int i = 0; i < requestedPermissions.length; i++) {
-                permissions.append(requestedPermissions[i] + "\n");
-            }
+            for (String permission : requestedPermissions)
+                permissions.append(permission + "\n");
 
             appPermissions.setText(permissions);
         }

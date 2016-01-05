@@ -1,180 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/toolbar_standard" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/info_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:contentDescription="@null" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="72dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/info_app_name"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/info_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:textColor="#1f1f1f"
-                    android:textSize="16sp"
-                    tools:text="App name" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/info_version"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#6d6d6d"
-                    android:textSize="14sp"
-                    tools:text="Version" />
+                    <TextView
+                        android:id="@+id/info_app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="#1f1f1f"
+                        android:textSize="16sp"
+                        tools:text="App name" />
 
+                    <TextView
+                        android:id="@+id/info_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#6d6d6d"
+                        android:textSize="14sp"
+                        tools:text="Version" />
+
+                </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                style="@style/InformationCardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Основная информация"
+                android:textAllCaps="true" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Имя пакета" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_sdk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Код SDK" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_data_folder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Папка данных" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_uid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="UID" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_install_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Установлено" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_update_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Последнее обновление" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                style="@style/InformationCardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="СЕРТИФИКАТ"
+                android:textAllCaps="true" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Тип ключа" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Тип подписи" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Версия" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_serial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Серийный номер" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_created"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Создан" />
+
+            <com.itemstudio.luen.InfoView
+                android:id="@+id/info_key_expires"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="Срок истекает" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                style="@style/InformationCardTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="РАЗРЕШЕНИЯ"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/info_permissions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:lineSpacingExtra="10dp"
+                android:textColor="#1f1f1f"
+                android:textSize="14sp" />
+
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#F0F0F0" />
-
-        <TextView
-            style="@style/InformationCardTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="Основная информация"
-            android:textAllCaps="true" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_package"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Имя пакета" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_sdk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Код SDK" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_data_folder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Папка данных" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_uid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="UID" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_install_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Установлено" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_update_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Последнее обновление" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="#F0F0F0" />
-
-        <TextView
-            style="@style/InformationCardTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="СЕРТИФИКАТ"
-            android:textAllCaps="true" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Тип ключа" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_sign"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Тип подписи" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Версия" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_serial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Серийный номер" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_created"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Создан" />
-
-        <com.itemstudio.luen.InfoView
-            android:id="@+id/info_key_expires"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:infoTitle="Срок истекает" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="#F0F0F0" />
-
-        <TextView
-            style="@style/InformationCardTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="РАЗРЕШЕНИЯ"
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/info_permissions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:textColor="#1f1f1f"
-            android:lineSpacingExtra="10dp"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

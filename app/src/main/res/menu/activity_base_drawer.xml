@@ -3,34 +3,27 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Приложения" />
+            android:id="@+id/drawer_my_apps"
+            android:icon="@drawable/ic_apps_vector"
+            android:title="Мои приложения" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Системные приложения" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:id="@+id/drawer_move_apps"
+            android:icon="@drawable/ic_move_vector"
             android:title="Перенос приложений" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_update_vector"
+            android:title="Обновления" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+    <group android:id="@+id/drawer_help_category">
+        <item
+            android:icon="@drawable/ic_donate_vector"
+            android:title="Пожертвовать" />
+
+        <item
+            android:icon="@drawable/ic_settings_vector"
+            android:title="Настройки" />
+    </group>
 
 </menu>
