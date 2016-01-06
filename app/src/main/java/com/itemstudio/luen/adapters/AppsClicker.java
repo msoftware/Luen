@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
-public class AppClicker implements RecyclerView.OnItemTouchListener {
+public class AppsClicker implements RecyclerView.OnItemTouchListener {
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -16,7 +16,7 @@ public class AppClicker implements RecyclerView.OnItemTouchListener {
 
     GestureDetector mGestureDetector;
 
-    public AppClicker(Context context, OnItemClickListener listener) {
+    public AppsClicker(Context context, OnItemClickListener listener) {
         mListener = listener;
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override

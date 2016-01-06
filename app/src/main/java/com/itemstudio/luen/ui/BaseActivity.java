@@ -1,34 +1,19 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.ui;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.itemstudio.luen.model.AppItem;
-import com.tumblr.remember.Remember;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import com.itemstudio.luen.fragments.AppsFragment;
+import com.itemstudio.luen.fragments.FileFragment;
+import com.itemstudio.luen.R;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -79,7 +64,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.drawer_my_apps:
-                fragment = new AppFragment();
+                fragment = new AppsFragment();
                 break;
             case R.id.drawer_move_apps:
                 fragment = new FileFragment();

@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.fragments;
 
 
 import android.app.Fragment;
@@ -12,17 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.itemstudio.luen.R;
+import com.itemstudio.luen.adapters.AppsAdapter;
+import com.itemstudio.luen.adapters.AppsClicker;
 import com.itemstudio.luen.model.AppItem;
+import com.itemstudio.luen.ui.BaseActivity;
+import com.itemstudio.luen.ui.InfoViewActivity;
 import com.tumblr.remember.Remember;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppFragment extends Fragment {
+public class AppsFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private AppAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private AppsAdapter mAdapter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -33,20 +36,20 @@ public class AppFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.content_base, container, false);
+        View view = inflater.inflate(R.layout.fragment_apps, container, false);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AppAdapter(getInstalledApps());
+        mAdapter = new AppsAdapter(getInstalledApps());
 
         mRecyclerView.addOnItemTouchListener(
-                new AppClicker(getActivity(), new AppClicker.OnItemClickListener() {
+                new AppsClicker(getActivity(), new AppsClicker.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Remember.putString("APP_KEY", mAdapter.getPackage(position));
-                        startActivity(new Intent(getActivity(), ViewActivity.class));
+                        startActivity(new Intent(getActivity(), InfoViewActivity.class));
                     }
                 })
         );

@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.ui.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,41 +7,43 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class InfoView extends LinearLayout {
+import com.itemstudio.luen.R;
+
+public class InfoLinearLayout extends LinearLayout {
     private String titleLabel = "";
     private String contentLabel = "";
     private TextView titleTextView;
     private TextView contentTextView;
 
 
-    public InfoView(Context context) {
+    public InfoLinearLayout(Context context) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.info_view, this);
+        LayoutInflater.from(context).inflate(R.layout.item_list_info, this);
     }
 
-    public InfoView(Context context, AttributeSet attrs) {
+    public InfoLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         initViews(context, attrs);
     }
 
-    public InfoView(Context context, AttributeSet attrs, int defStyle) {
+    public InfoLinearLayout(Context context, AttributeSet attrs, int defStyle) {
         this(context, attrs);
         initViews(context, attrs);
     }
 
     private void initViews(Context context, AttributeSet attrs) {
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.InfoView, 0, 0);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.InfoLinearLayout, 0, 0);
 
         try {
             // get the text and colors specified using the names in attrs.xml
-            titleLabel = a.getString(R.styleable.InfoView_infoTitle);
-            contentLabel = a.getString(R.styleable.InfoView_infoContent);
+            titleLabel = a.getString(R.styleable.InfoLinearLayout_infoTitle);
+            contentLabel = a.getString(R.styleable.InfoLinearLayout_infoContent);
 
         } finally {
             a.recycle();
         }
 
-        LayoutInflater.from(context).inflate(R.layout.info_view, this);
+        LayoutInflater.from(context).inflate(R.layout.item_list_info, this);
 
         //left text view
         titleTextView = (TextView) this.findViewById(R.id.info_title);

@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

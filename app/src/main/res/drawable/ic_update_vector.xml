@@ -10,6 +10,6 @@
     <path
         android:pathData="M19 9l-4 0 0 -6 -6 0 0 6 -4 0 7 7 7 -7zm-14 9l0 2 14 0 0 -2 -14 0z"
         better:pathData="M19 9l-4 0 0 -6 -6 0 0 6 -4 0 7 7 7 -7zm-14 9l0 2 14 0 0 -2 -14 0z"
-        android:fillColor="#FFF"
-        better:fillColor="#FFF" />
+        android:fillColor="#000"
+        better:fillColor="#000" />
 </vector>

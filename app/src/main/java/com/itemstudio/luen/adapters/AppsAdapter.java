@@ -1,18 +1,18 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.adapters;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.itemstudio.luen.R;
 import com.itemstudio.luen.model.AppItem;
 
 import java.util.ArrayList;
 
-public class AppAdapter extends RecyclerView.Adapter<AppAdapter.DataObjectHolder> {
+public class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.DataObjectHolder> {
     private ArrayList<AppItem> mDataset;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder {
@@ -31,13 +31,13 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.DataObjectHolder
 
     }
 
-    public AppAdapter(ArrayList<AppItem> myDataset) {
+    public AppsAdapter(ArrayList<AppItem> myDataset) {
         mDataset = myDataset;
     }
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_model, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_app, parent, false);
 
         return new DataObjectHolder(view);
     }

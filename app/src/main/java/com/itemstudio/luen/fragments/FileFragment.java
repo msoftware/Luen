@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -8,9 +8,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.itemstudio.luen.ui.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 

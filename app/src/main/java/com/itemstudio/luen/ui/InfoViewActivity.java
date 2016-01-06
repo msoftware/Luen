@@ -1,4 +1,4 @@
-package com.itemstudio.luen;
+package com.itemstudio.luen.ui;
 
 import android.app.Activity;
 import android.content.pm.ApplicationInfo;
@@ -11,6 +11,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gordonwong.materialsheetfab.MaterialSheetFab;
+import com.itemstudio.luen.ui.widget.SheetFloatingButton;
+import com.itemstudio.luen.ui.widget.InfoLinearLayout;
+import com.itemstudio.luen.R;
+import com.itemstudio.luen.utils.Utils;
 import com.tumblr.remember.Remember;
 
 import java.security.PublicKey;
@@ -20,7 +25,7 @@ import java.security.interfaces.RSAPublicKey;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ViewActivity extends AppCompatActivity {
+public class InfoViewActivity extends AppCompatActivity {
     PackageInfo packageInfo;
     ApplicationInfo applicationInfo;
 
@@ -33,30 +38,30 @@ public class ViewActivity extends AppCompatActivity {
     ImageView appIcon;
 
     @Bind(R.id.info_package)
-    InfoView appPackage;
+    InfoLinearLayout appPackage;
     @Bind(R.id.info_sdk)
-    InfoView appSDK;
+    InfoLinearLayout appSDK;
     @Bind(R.id.info_data_folder)
-    InfoView appDataFolder;
+    InfoLinearLayout appDataFolder;
     @Bind(R.id.info_uid)
-    InfoView appUID;
+    InfoLinearLayout appUID;
     @Bind(R.id.info_install_date)
-    InfoView appInstallDate;
+    InfoLinearLayout appInstallDate;
     @Bind(R.id.info_update_date)
-    InfoView appUpdateDate;
+    InfoLinearLayout appUpdateDate;
 
     @Bind(R.id.info_key_type)
-    InfoView keyType;
+    InfoLinearLayout keyType;
     @Bind(R.id.info_key_sign)
-    InfoView keySign;
+    InfoLinearLayout keySign;
     @Bind(R.id.info_key_version)
-    InfoView keyVersion;
+    InfoLinearLayout keyVersion;
     @Bind(R.id.info_key_serial)
-    InfoView keySerial;
+    InfoLinearLayout keySerial;
     @Bind(R.id.info_key_created)
-    InfoView keyCreated;
+    InfoLinearLayout keyCreated;
     @Bind(R.id.info_key_expires)
-    InfoView keyExpires;
+    InfoLinearLayout keyExpires;
 
     @Bind(R.id.info_permissions)
     TextView appPermissions;
@@ -69,6 +74,13 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
 
+        SheetFloatingButton fab = (SheetFloatingButton) findViewById(R.id.fab);
+        View sheetView = findViewById(R.id.fab_sheet);
+        View overlay = findViewById(R.id.overlay);
+        int sheetColor = getResources().getColor(R.color.white);
+        int fabColor = getResources().getColor(R.color.white);
+
+        MaterialSheetFab materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.standard_toolbar);
 

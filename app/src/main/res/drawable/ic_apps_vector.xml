@@ -10,6 +10,6 @@
     <path
         android:pathData="M4 8L8 8 8 4 4 4 4 8Zm6 12l4 0 0 -4 -4 0 0 4zm-6 0l4 0 0 -4 -4 0 0 4zm0 -6l4 0 0 -4 -4 0 0 4zm6 0l4 0 0 -4 -4 0 0 4zm6 -10l0 4 4 0 0 -4 -4 0zm-6 4l4 0 0 -4 -4 0 0 4zm6 6l4 0 0 -4 -4 0 0 4zm0 6l4 0 0 -4 -4 0 0 4z"
         better:pathData="M4 8L8 8 8 4 4 4 4 8Zm6 12l4 0 0 -4 -4 0 0 4zm-6 0l4 0 0 -4 -4 0 0 4zm0 -6l4 0 0 -4 -4 0 0 4zm6 0l4 0 0 -4 -4 0 0 4zm6 -10l0 4 4 0 0 -4 -4 0zm-6 4l4 0 0 -4 -4 0 0 4zm6 6l4 0 0 -4 -4 0 0 4zm0 6l4 0 0 -4 -4 0 0 4z"
-        android:fillColor="#FFF"
-        better:fillColor="#FFF" />
+        android:fillColor="#000"
+        better:fillColor="#000" />
 </vector>
