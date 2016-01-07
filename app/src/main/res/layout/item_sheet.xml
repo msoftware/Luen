@@ -18,7 +18,7 @@
 
             <!-- Recording -->
             <TextView
-                android:id="@+id/fab_sheet_item_recording"
+                android:id="@+id/info_sheet_open"
                 style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
                 android:drawableLeft="@drawable/ic_open_vector"
                 android:drawableStart="@drawable/ic_open_vector"
@@ -42,7 +42,7 @@
 
 
             <TextView
-                android:id="@+id/fab_sheet_item_note"
+                android:id="@+id/info_sheet_delete"
                 style="@style/TextAppearance.MaterialSheetFab.Sheet.Item"
                 android:drawableLeft="@drawable/ic_delete_vector"
                 android:drawableStart="@drawable/ic_delete_vector"

@@ -1,12 +1,15 @@
 package com.itemstudio.luen.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,10 +27,12 @@ import java.security.interfaces.RSAPublicKey;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class InfoViewActivity extends AppCompatActivity {
     PackageInfo packageInfo;
     ApplicationInfo applicationInfo;
+    MaterialSheetFab materialSheetFab;
 
     //region INITIALIZATION VIEWS
     @Bind(R.id.info_app_name)
@@ -80,7 +85,7 @@ public class InfoViewActivity extends AppCompatActivity {
         int sheetColor = getResources().getColor(R.color.white);
         int fabColor = getResources().getColor(R.color.white);
 
-        MaterialSheetFab materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
+        materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.standard_toolbar);
 
@@ -126,6 +131,20 @@ public class InfoViewActivity extends AppCompatActivity {
         showCertificateInfo(this, Remember.getString("APP_KEY", ""));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Log.d("TAG", "onActivityResult: user accepted the (un)install");
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.d("TAG", "onActivityResult: user canceled the (un)install");
+            } else if (resultCode == RESULT_FIRST_USER) {
+                Log.d("TAG", "onActivityResult: failed to (un)install");
+            }
+        }
+    }
+
     public void showCertificateInfo(Activity activity, String packageName) {
         X509Certificate[] certs = Utils.getX509Certificates(activity, packageName);
         if (certs == null || certs.length < 1)
@@ -149,5 +168,23 @@ public class InfoViewActivity extends AppCompatActivity {
         keySerial.setContent(cert.getSerialNumber().toString(16));
         keyCreated.setContent(Utils.getDateFormatter().format(cert.getNotBefore()));
         keyExpires.setContent(Utils.getDateFormatter().format(cert.getNotAfter()));
+    }
+
+    @OnClick(R.id.info_sheet_open)
+    public void openButton() {
+        Intent i = getPackageManager().getLaunchIntentForPackage(Remember.getString("APP_KEY", ""));
+        startActivity(i);
+
+        materialSheetFab.hideSheet();
+    }
+
+    @OnClick(R.id.info_sheet_delete)
+    public void deleteButton() {
+        Intent deleteIntent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
+        deleteIntent.setData(Uri.parse("package:" + Remember.getString("APP_KEY", "")));
+        deleteIntent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+        startActivityForResult(deleteIntent, 1);
+
+        materialSheetFab.hideSheet();
     }
 }
