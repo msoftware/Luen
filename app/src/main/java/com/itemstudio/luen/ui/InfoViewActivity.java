@@ -1,77 +1,27 @@
 package com.itemstudio.luen.ui;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.gordonwong.materialsheetfab.MaterialSheetFab;
-import com.itemstudio.luen.ui.widget.SheetFloatingButton;
-import com.itemstudio.luen.ui.widget.InfoLinearLayout;
 import com.itemstudio.luen.R;
-import com.itemstudio.luen.utils.Utils;
-import com.tumblr.remember.Remember;
+import com.itemstudio.luen.fragments.ComponentsFragment;
+import com.itemstudio.luen.fragments.GeneralFragment;
 
-import java.security.PublicKey;
-import java.security.cert.X509Certificate;
-import java.security.interfaces.RSAPublicKey;
+import java.util.ArrayList;
+import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class InfoViewActivity extends AppCompatActivity {
-    PackageInfo packageInfo;
-    ApplicationInfo applicationInfo;
-    MaterialSheetFab materialSheetFab;
 
-    //region INITIALIZATION VIEWS
-    @Bind(R.id.info_app_name)
-    TextView appName;
-    @Bind(R.id.info_version)
-    TextView appVersion;
-    @Bind(R.id.info_icon)
-    ImageView appIcon;
-
-    @Bind(R.id.info_package)
-    InfoLinearLayout appPackage;
-    @Bind(R.id.info_sdk)
-    InfoLinearLayout appSDK;
-    @Bind(R.id.info_data_folder)
-    InfoLinearLayout appDataFolder;
-    @Bind(R.id.info_uid)
-    InfoLinearLayout appUID;
-    @Bind(R.id.info_install_date)
-    InfoLinearLayout appInstallDate;
-    @Bind(R.id.info_update_date)
-    InfoLinearLayout appUpdateDate;
-
-    @Bind(R.id.info_key_type)
-    InfoLinearLayout keyType;
-    @Bind(R.id.info_key_sign)
-    InfoLinearLayout keySign;
-    @Bind(R.id.info_key_version)
-    InfoLinearLayout keyVersion;
-    @Bind(R.id.info_key_serial)
-    InfoLinearLayout keySerial;
-    @Bind(R.id.info_key_created)
-    InfoLinearLayout keyCreated;
-    @Bind(R.id.info_key_expires)
-    InfoLinearLayout keyExpires;
-
-    @Bind(R.id.info_permissions)
-    TextView appPermissions;
-
-    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,56 +29,53 @@ public class InfoViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
 
-        SheetFloatingButton fab = (SheetFloatingButton) findViewById(R.id.fab);
-        View sheetView = findViewById(R.id.fab_sheet);
-        View overlay = findViewById(R.id.overlay);
-        int sheetColor = getResources().getColor(R.color.white);
-        int fabColor = getResources().getColor(R.color.white);
-
-        materialSheetFab = new MaterialSheetFab<>(fab, sheetView, overlay, sheetColor, fabColor);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.standard_toolbar);
-
-        toolbar.setTitle("О приложении");
+        toolbar.setElevation(0);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back_vector);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
 
-        StringBuffer permissions = new StringBuffer();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        try {
-            packageInfo = getPackageManager().getPackageInfo(Remember.getString("APP_KEY", ""), PackageManager.GET_PERMISSIONS);
-            PackageManager pm = getPackageManager();
-            applicationInfo = pm.getApplicationInfo(Remember.getString("APP_KEY", ""), PackageManager.GET_UNINSTALLED_PACKAGES);
-        } catch (PackageManager.NameNotFoundException ex) {
-            ex.printStackTrace();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new GeneralFragment(), "GENERAL");
+        adapter.addFragment(new ComponentsFragment(), "COMPONENTS");
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
-        String[] requestedPermissions = packageInfo.requestedPermissions;
-        if (requestedPermissions != null) {
-            for (String permission : requestedPermissions)
-                permissions.append(permission + "\n");
-
-            appPermissions.setText(permissions);
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
         }
 
-        appName.setText(packageInfo.applicationInfo.loadLabel(getPackageManager()).toString());
-        appVersion.setText(getString(R.string.info_version) + String.valueOf(packageInfo.versionName));
-        appIcon.setImageDrawable(packageInfo.applicationInfo.loadIcon(getPackageManager()));
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
 
-        appPackage.setContent(packageInfo.packageName);
-        appSDK.setContent(String.valueOf(applicationInfo.targetSdkVersion));
-        appDataFolder.setContent(applicationInfo.dataDir);
-        appUID.setContent(String.valueOf(applicationInfo.uid));
-        appInstallDate.setContent(Utils.getDateFormatter().format(packageInfo.firstInstallTime));
-        appUpdateDate.setContent(Utils.getDateFormatter().format(packageInfo.lastUpdateTime));
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
 
-        showCertificateInfo(this, Remember.getString("APP_KEY", ""));
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
     @Override
@@ -143,48 +90,5 @@ public class InfoViewActivity extends AppCompatActivity {
                 Log.d("TAG", "onActivityResult: failed to (un)install");
             }
         }
-    }
-
-    public void showCertificateInfo(Activity activity, String packageName) {
-        X509Certificate[] certs = Utils.getX509Certificates(activity, packageName);
-        if (certs == null || certs.length < 1)
-            return;
-        /*
-         * for now, just support the first cert since that is far and away the
-         * most common
-         */
-        X509Certificate cert = certs[0];
-
-        PublicKey publickey = cert.getPublicKey();
-        int size;
-        if (publickey.getAlgorithm().equals("RSA"))
-            size = ((RSAPublicKey) publickey).getModulus().bitLength();
-        else
-            size = publickey.getEncoded().length * 7; // bad estimate
-
-        keyType.setContent(publickey.getAlgorithm() + " " + String.valueOf(size) + " bit");
-        keySign.setContent(cert.getSigAlgName());
-        keyVersion.setContent(String.valueOf(cert.getVersion()));
-        keySerial.setContent(cert.getSerialNumber().toString(16));
-        keyCreated.setContent(Utils.getDateFormatter().format(cert.getNotBefore()));
-        keyExpires.setContent(Utils.getDateFormatter().format(cert.getNotAfter()));
-    }
-
-    @OnClick(R.id.info_sheet_open)
-    public void openButton() {
-        Intent i = getPackageManager().getLaunchIntentForPackage(Remember.getString("APP_KEY", ""));
-        startActivity(i);
-
-        materialSheetFab.hideSheet();
-    }
-
-    @OnClick(R.id.info_sheet_delete)
-    public void deleteButton() {
-        Intent deleteIntent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE);
-        deleteIntent.setData(Uri.parse("package:" + Remember.getString("APP_KEY", "")));
-        deleteIntent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
-        startActivityForResult(deleteIntent, 1);
-
-        materialSheetFab.hideSheet();
     }
 }
