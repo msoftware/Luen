@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.itemstudio.luen.fragments.AppsFragment;
 import com.itemstudio.luen.fragments.FileFragment;
 import com.itemstudio.luen.R;
+import com.itemstudio.luen.fragments.TestFragment;
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -67,7 +68,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new AppsFragment();
                 break;
             case R.id.drawer_move_apps:
-                fragment = new FileFragment();
+                fragment = new TestFragment();
                 break;
         }
 

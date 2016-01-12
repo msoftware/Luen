@@ -2,7 +2,24 @@
     <string name="app_name">Luen</string>
 
     <!-- Strings for Info -->
-    <string name="info_version">Версия\u0020</string>
+    <string name="info_category_details">Details</string>
+    <string name="info_category_memory">Memory</string>
+    <string name="info_category_cert">Certificate</string>
+    <string name="info_app_version">Version\u0020</string>
+    <string name="info_app_package">Package</string>
+    <string name="info_app_sdk">Target SDK</string>
+    <string name="info_app_data_directory">Data directory</string>
+    <string name="info_app_uid">UID</string>
+    <string name="info_app_installed">Installed</string>
+    <string name="info_app_updated">Updated</string>
+    <string name="info_memory_total">Total</string>
+    <string name="info_memory_data">Data</string>
+    <string name="info_memory_cache">Cache</string>
+    <string name="info_cert_key_type">Key type</string>
+    <string name="info_cert_sign_type">Sign type</string>
+    <string name="info_cert_serial">Serial number</string>
+    <string name="info_cert_created">Created</string>
+    <string name="info_cert_expires">Expires</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

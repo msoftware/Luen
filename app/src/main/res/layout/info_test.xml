@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_standard" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/info_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/info_app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        tools:text="App name" />
+
+                    <TextView
+                        android:id="@+id/info_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/content_color"
+                        android:textSize="14sp"
+                        tools:text="Version" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/info_category_details"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_package" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_sdk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_sdk" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_data_folder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_data_directory" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_uid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_uid" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_install_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_installed" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_update_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_updated" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/info_category_memory"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="APK"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/info_memory_apk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/info_memory_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:max="100"
+                android:progress="10"
+                android:progressDrawable="@drawable/progress_bar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/info_memory_total"
+                    android:textColor="@color/content_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/info_memory_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/info_memory_data"
+                    android:textColor="@color/content_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/info_memory_data"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/info_memory_cache"
+                    android:textColor="@color/content_color"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/info_memory_cache"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="#F0F0F0" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:text="@string/info_category_cert"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_cert_key_type" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_cert_sign_type" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_app_version" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_serial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_cert_serial" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_created"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:infoTitle="@string/info_cert_created" />
+
+            <com.itemstudio.luen.ui.widget.InfoLinearLayout
+                android:id="@+id/info_key_expires"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:infoTitle="@string/info_cert_expires" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
